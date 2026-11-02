@@ -23,6 +23,6 @@ public class EtudiantControllerTest {
             .thenReturn(List.of(new Etudiant("Mballa", "Jean", "jean@mail.cm")));
         List<Etudiant> resultat = controller.lister();
         assertEquals(1, resultat.size());
-        assertEquals("Mballa", resultat.get(0).getNom());
+        assertEquals("Nkana", resultat.get(0).getNom());
     }
 }

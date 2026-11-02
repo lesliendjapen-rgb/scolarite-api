@@ -1,5 +1,6 @@
 package com.tp.scolarite;
 
+import static org.mockito.Mockito.verify;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 import java.util.List;
@@ -24,5 +25,16 @@ public class EtudiantControllerTest {
         List<Etudiant> resultat = controller.lister();
         assertEquals(1, resultat.size());
         assertEquals("Mballa", resultat.get(0).getNom());
+    }
+
+    @Test
+    public void creerEnregistreLEtudiant() {
+        Etudiant etudiant = new Etudiant("Ngono", "Marie", "marie@mail.cm");
+        when(repository.save(etudiant)).thenReturn(etudiant);
+        
+        Etudiant resultat = controller.creer(etudiant);
+        
+        assertEquals("Ngono", resultat.getNom());
+        verify(repository).save(etudiant);
     }
 }
